@@ -1,0 +1,101 @@
+{
+  "description": "Coding Rules Loop Codex observe。",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 5,
+            "additionalContextLimit": 1500
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 5,
+            "additionalContextLimit": 1500
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 5,
+            "additionalContextLimit": 1500
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^(Bash|apply_patch|Edit|Write|mcp__.*)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 5,
+            "additionalContextLimit": 1500
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "^(Bash|apply_patch|Edit|Write|mcp__.*)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 5,
+            "additionalContextLimit": 1500
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Interrupt": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CODING_RULES_LOOP_MODE=observe CODING_RULES_LOOP_LEGACY_HOOK_ACTIVE=0 /usr/bin/python3 ~/.agents/skills/coding-rules-loop/scripts/codex_hook.py",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}

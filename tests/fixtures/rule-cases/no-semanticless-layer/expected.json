@@ -1,0 +1,19 @@
+{
+  "rule": "coding.no-semanticless-layer",
+  "result": "repairable",
+  "reason": "Controller 将语义一致且已校验的 Req 机械拆为基础参数，没有产生协议隔离或业务语义",
+  "preconditions": [
+    "OrderSaveReq 已在请求边界完成基础校验",
+    "OrderApplication.save 没有需要继续使用基础参数的其他调用方"
+  ],
+  "expected": [
+    "沿用目标项目现有的请求或内部对象命名",
+    "删除没有语义收益的参数拆解"
+  ],
+  "forbidden": [
+    "修改接口 URL",
+    "修改请求字段",
+    "引入项目中不存在的 Command 分层",
+    "重构未触达的其他调用链"
+  ]
+}

@@ -20,6 +20,11 @@
 | [CLAUDE.md](CLAUDE.md) | Claude Code 兼容入口 | 与通用规则保持一致 |
 | [skills/rg-code-review](skills/rg-code-review) | 团队级增量代码审查 Skill | 已可用 |
 | [docs/architecture.md](docs/architecture.md) | 组件边界与演进原则 | 已可用 |
+| [skills/coding-rules-loop](skills/coding-rules-loop) | 编码规则加载、整批 diff 检查、修复与复查 | Codex observe 已实现；repair 待受控真实任务验收 |
+| [skills/coding-standards-java](skills/coding-standards-java) | Java/Spring 核心规则与按需详细规范 | 已有本地回归测试 |
+| [skills/api-design](skills/api-design) | API 设计与已有接口兼容 | 遵循目标项目契约，Feign 仅检查兼容 |
+
+Coding Rules Loop 的 [技术方案](docs/coding-rules-loop/编码规则Loop技术方案.md) 和 [开发计划](docs/coding-rules-loop/编码规则Loop开发计划.md) 说明组件边界、接入步骤、验证方式及当前限制。
 
 ## 使用方式
 
@@ -57,7 +62,7 @@ Skill               能力：在特定触发条件下可复用的执行方法
 工具适配（adapters）差异：同一能力如何接入不同 Coding Agent
 ```
 
-当前仓库已沉淀通用规则和代码审查 Skill。其余目录只在出现第一个可复用、经过实际验证的组件时创建，避免空目录和形式化资产。
+当前仓库包含通用协作规则、代码审查 Skill 和 Coding Rules Loop。`hooks/` 保存工具协议适配，`scripts/coding-rules-loop/` 保存共享核心，`rules/` 保存正式规则和 Learning 候选，`tests/` 保存回归用例。
 
 详细边界见 [架构说明](docs/architecture.md)。
 
@@ -74,6 +79,9 @@ coding-agent-engineering   Agent 如何在工程项目中可靠地工作
 
 - [x] 通用 Agent 协作规则
 - [x] 团队级增量代码审查 Skill
+- [x] Coding Rules Loop 公共核心、Codex 收尾检查续接与结构化回写
+- [x] Qoder IDE Adapter 与协议 fixture
+- [ ] Codex 受控 repair 真实任务验收与 Qoder IDE 实机验收
 - [ ] 从真实项目中提炼需求澄清、缺陷修复与交付验证工作流
 - [ ] 补充 Codex、Claude Code 等工具的最小适配说明
 - [ ] 为稳定组件补充示例与验证方式
