@@ -1,0 +1,96 @@
+[
+  {
+    "name": "common",
+    "files": ["README.md"],
+    "change_hints": [],
+    "skills": [],
+    "api_boundary": null,
+    "api_reference": false,
+    "java_reference": false
+  },
+  {
+    "name": "java",
+    "files": ["src/main/java/com/example/OrderService.java"],
+    "change_hints": [],
+    "skills": ["coding-standards-java"],
+    "api_boundary": null,
+    "api_reference": false,
+    "java_reference": false
+  },
+  {
+    "name": "java-architecture",
+    "files": ["src/main/java/com/example/NewOrderApplication.java"],
+    "change_hints": ["architecture_change", "transaction_change"],
+    "skills": ["coding-standards-java"],
+    "api_boundary": null,
+    "api_reference": false,
+    "java_reference": true
+  },
+  {
+    "name": "java-test-strategy",
+    "files": ["src/test/java/com/example/OrderRepositoryIT.java"],
+    "change_hints": ["test_strategy_change"],
+    "skills": ["coding-standards-java"],
+    "api_boundary": null,
+    "api_reference": false,
+    "java_reference": true
+  },
+  {
+    "name": "existing-api",
+    "files": ["src/main/java/com/example/OrderController.java"],
+    "change_hints": [],
+    "skills": ["api-design", "coding-standards-java"],
+    "api_boundary": "full",
+    "api_reference": false,
+    "java_reference": false
+  },
+  {
+    "name": "new-api",
+    "files": ["src/main/java/com/example/NewOrderController.java"],
+    "change_hints": ["new_endpoint"],
+    "skills": ["api-design", "coding-standards-java"],
+    "api_boundary": "full",
+    "api_reference": true,
+    "java_reference": false
+  },
+  {
+    "name": "contract-change",
+    "files": ["src/main/java/com/example/OrderRequest.java"],
+    "change_hints": ["request_change"],
+    "skills": ["api-design", "coding-standards-java"],
+    "api_boundary": "full",
+    "api_reference": true,
+    "java_reference": false
+  },
+  {
+    "name": "feign",
+    "files": ["src/main/java/com/example/OrderFeignClient.java"],
+    "change_hints": [],
+    "skills": ["api-design", "coding-standards-java"],
+    "api_boundary": "compatibility-only",
+    "api_reference": false,
+    "java_reference": false
+  },
+  {
+    "name": "openapi",
+    "files": ["docs/openapi.yaml"],
+    "change_hints": ["openapi_change"],
+    "skills": ["api-design"],
+    "api_boundary": "full",
+    "api_reference": true,
+    "java_reference": false
+  },
+  {
+    "name": "multi-file-chain",
+    "files": [
+      "src/main/java/com/example/OrderController.java",
+      "src/main/java/com/example/OrderApplication.java",
+      "src/main/java/com/example/OrderFeignClient.java"
+    ],
+    "change_hints": [],
+    "skills": ["api-design", "coding-standards-java"],
+    "api_boundary": "full",
+    "api_reference": false,
+    "java_reference": false
+  }
+]

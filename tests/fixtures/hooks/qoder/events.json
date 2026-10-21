@@ -1,0 +1,84 @@
+{
+  "base": {
+    "session_id": "qoder-session-fixture",
+    "cwd": "${repo}",
+    "transcript_path": "${repo}/transcript.jsonl"
+  },
+  "events": [
+    {
+      "hook_event_name": "SessionStart",
+      "internal_event": "session_initialized",
+      "normal": {"type": "startup", "model": "Auto"},
+      "abnormal": {"type": "resume"},
+      "missing_field": "type"
+    },
+    {
+      "hook_event_name": "SessionEnd",
+      "internal_event": "session_ended",
+      "normal": {"reason": "exit"},
+      "abnormal": {"reason": 42},
+      "missing_field": "cwd"
+    },
+    {
+      "hook_event_name": "UserPromptSubmit",
+      "internal_event": "task_intent_received",
+      "normal": {"prompt": "请修复订单查询问题"},
+      "abnormal": {"prompt": 42},
+      "missing_field": "session_id"
+    },
+    {
+      "hook_event_name": "SubagentStart",
+      "internal_event": "agent_started",
+      "normal": {"agent_id": "child-1", "agent_type": "task"},
+      "abnormal": {"agent_id": 42, "agent_type": "task"},
+      "missing_field": "agent_type"
+    },
+    {
+      "hook_event_name": "PreToolUse",
+      "internal_event": "before_code_write",
+      "normal": {
+        "tool_name": "Edit",
+        "tool_input": {"file_path": "src/main/java/example/OrderService.java", "new_string": "value"}
+      },
+      "abnormal": {"tool_name": "Edit", "tool_input": "invalid"},
+      "missing_field": "tool_name"
+    },
+    {
+      "hook_event_name": "PostToolUse",
+      "internal_event": "after_code_write",
+      "normal": {
+        "tool_name": "Edit",
+        "tool_input": {"file_path": "src/main/java/example/OrderService.java", "new_string": "value"},
+        "tool_response": "File written successfully"
+      },
+      "abnormal": {"tool_name": "Edit", "tool_input": []},
+      "missing_field": "tool_name"
+    },
+    {
+      "hook_event_name": "PostToolUseFailure",
+      "internal_event": "after_code_write",
+      "normal": {
+        "tool_name": "Edit",
+        "tool_input": {"file_path": "src/main/java/example/OrderService.java", "new_string": "value"},
+        "error": "write failed",
+        "is_interrupt": false
+      },
+      "abnormal": {"tool_name": "Edit", "tool_input": {}, "error": 42},
+      "missing_field": "error"
+    },
+    {
+      "hook_event_name": "Stop",
+      "internal_event": "before_task_finish",
+      "normal": {"stop_hook_active": false, "last_assistant_message": "done"},
+      "abnormal": {"stop_hook_active": "false"},
+      "missing_field": "session_id"
+    },
+    {
+      "hook_event_name": "PreCompact",
+      "internal_event": "context_restored",
+      "normal": {"trigger": "auto", "custom_instructions": ""},
+      "abnormal": {"trigger": "invalid"},
+      "missing_field": "trigger"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "base": {
+    "session_id": "session-fixture",
+    "turn_id": "turn-fixture",
+    "cwd": "${repo}",
+    "permission_mode": "default",
+    "model": "fixture-model"
+  },
+  "events": [
+    {
+      "hook_event_name": "SessionStart",
+      "internal_event": "session_initialized",
+      "normal": {"source": "startup"},
+      "abnormal": {"source": "invalid"},
+      "missing_field": "source"
+    },
+    {
+      "hook_event_name": "SessionEnd",
+      "internal_event": "session_ended",
+      "normal": {"reason": "other"},
+      "abnormal": {"reason": "invalid"},
+      "missing_field": "cwd"
+    },
+    {
+      "hook_event_name": "UserPromptSubmit",
+      "internal_event": "task_intent_received",
+      "normal": {"prompt": "请修复订单查询问题"},
+      "abnormal": {"prompt": 42},
+      "missing_field": "turn_id"
+    },
+    {
+      "hook_event_name": "SubagentStart",
+      "internal_event": "agent_started",
+      "normal": {"agent_id": "child-1", "agent_type": "worker"},
+      "abnormal": {"agent_id": 42, "agent_type": "worker"},
+      "missing_field": "agent_type"
+    },
+    {
+      "hook_event_name": "PreToolUse",
+      "internal_event": "before_code_write",
+      "normal": {
+        "tool_name": "apply_patch",
+        "tool_use_id": "tool-1",
+        "tool_input": {"command": "*** Begin Patch\n*** Update File: src/main/java/example/OrderService.java\n*** End Patch"}
+      },
+      "abnormal": {"tool_name": "apply_patch", "tool_input": "invalid"},
+      "missing_field": "tool_name"
+    },
+    {
+      "hook_event_name": "PostToolUse",
+      "internal_event": "after_code_write",
+      "normal": {
+        "tool_name": "apply_patch",
+        "tool_use_id": "tool-1",
+        "tool_input": {"command": "*** Begin Patch\n*** Update File: src/main/java/example/OrderService.java\n*** End Patch"},
+        "tool_response": {"status": "ok"}
+      },
+      "abnormal": {"tool_name": "apply_patch", "tool_input": []},
+      "missing_field": "tool_name"
+    },
+    {
+      "hook_event_name": "Stop",
+      "internal_event": "before_task_finish",
+      "normal": {"stop_hook_active": false, "last_assistant_message": "done"},
+      "abnormal": {"stop_hook_active": "false"},
+      "missing_field": "turn_id"
+    },
+    {
+      "hook_event_name": "Interrupt",
+      "internal_event": "turn_interrupted",
+      "normal": {},
+      "abnormal": {"permission_mode": []},
+      "missing_field": "turn_id"
+    }
+  ]
+}

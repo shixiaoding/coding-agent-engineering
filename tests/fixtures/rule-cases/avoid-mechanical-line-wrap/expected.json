@@ -1,0 +1,18 @@
+{
+  "rule": "coding.avoid-mechanical-line-wrap",
+  "result": "repairable",
+  "reason": "单参数方法声明结构清楚，略微超过 140 字符时不应机械拆成三行",
+  "preconditions": [
+    "目标项目没有 formatter 或 Checkstyle 强制该换行格式",
+    "合并后声明仍然容易阅读"
+  ],
+  "expected": [
+    "方法声明恢复为单行",
+    "方法体和未触达代码保持不变"
+  ],
+  "forbidden": [
+    "覆盖目标项目 formatter",
+    "为了统一格式修改其他历史方法",
+    "把 140 字符作为硬阻塞阈值"
+  ]
+}
